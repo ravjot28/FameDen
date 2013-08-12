@@ -12,7 +12,6 @@ import javafx.animation.Animation;
 import static javafx.animation.Animation.Status.RUNNING;
 
 
-import javafx.animation.Interpolator;
 import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.beans.value.ChangeListener;
@@ -23,7 +22,7 @@ import javafx.util.Duration;
 
 public class TimeLineTransition extends Transition {
 
-    protected static final Interpolator WEB_EASE = Interpolator.SPLINE(0.25, 0.1, 0.25, 1);
+    
     protected final Node node;
     protected Timeline timeline;
     private boolean oldCache = false;
