@@ -8,6 +8,7 @@ package com.fameden.animations;
  *
  * @author Ravjot
  */
+import com.fameden.constants.GlobalConstants;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.TimelineBuilder;
@@ -22,26 +23,26 @@ public class WobbleAnimation extends TimeLineTransition {
                 TimelineBuilder.create()
                 .keyFrames(
                 new KeyFrame(Duration.millis(0),
-                new KeyValue(node.translateXProperty(), 0, WEB_EASE),
-                new KeyValue(node.rotateProperty(), 0, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), 0, GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), 0, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(150),
-                new KeyValue(node.translateXProperty(), -0.25 * node.getBoundsInParent().getWidth(), WEB_EASE),
-                new KeyValue(node.rotateProperty(), -5, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), -0.25 * node.getBoundsInParent().getWidth(), GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), -5, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(300),
-                new KeyValue(node.translateXProperty(), 0.2 * node.getBoundsInParent().getWidth(), WEB_EASE),
-                new KeyValue(node.rotateProperty(), 3, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), 0.2 * node.getBoundsInParent().getWidth(), GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), 3, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(450),
-                new KeyValue(node.translateXProperty(), -0.15 * node.getBoundsInParent().getWidth(), WEB_EASE),
-                new KeyValue(node.rotateProperty(), -3, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), -0.15 * node.getBoundsInParent().getWidth(), GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), -3, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(600),
-                new KeyValue(node.translateXProperty(), 0.1 * node.getBoundsInParent().getWidth(), WEB_EASE),
-                new KeyValue(node.rotateProperty(), 2, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), 0.1 * node.getBoundsInParent().getWidth(), GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), 2, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(750),
-                new KeyValue(node.translateXProperty(), -0.05 * node.getBoundsInParent().getWidth(), WEB_EASE),
-                new KeyValue(node.rotateProperty(), -1, WEB_EASE)),
+                new KeyValue(node.translateXProperty(), -0.05 * node.getBoundsInParent().getWidth(), GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), -1, GlobalConstants.WEB_EASE)),
                 new KeyFrame(Duration.millis(1000),
-                new KeyValue(node.translateXProperty(), 0, WEB_EASE),
-                new KeyValue(node.rotateProperty(), 0, WEB_EASE)))
+                new KeyValue(node.translateXProperty(), 0, GlobalConstants.WEB_EASE),
+                new KeyValue(node.rotateProperty(), 0, GlobalConstants.WEB_EASE)))
                 .build(),
                 true);
         setCycleDuration(Duration.seconds(1));

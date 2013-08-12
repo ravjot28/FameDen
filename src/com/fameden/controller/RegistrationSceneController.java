@@ -5,6 +5,7 @@
 package com.fameden.controller;
 
 import com.fameden.bindingDTO.RegistrationBindingDTO;
+import com.fameden.constants.GlobalConstants;
 import com.fameden.dto.RegistrationDTO;
 import com.fameden.fxml.SceneNavigator;
 import com.fameden.util.CommonValidations;
@@ -62,7 +63,7 @@ public class RegistrationSceneController implements Initializable, IScreenContro
         System.out.println("Sign Up");
 
         if (!CommonValidations.isStringEmpty(registrationBindingDTO.getFullName())) {
-            if (!CommonValidations.isStringEmpty(registrationBindingDTO.getEmailAddress())) {
+            if (CommonValidations.isValidEmailAddress(registrationBindingDTO.getEmailAddress())) {
                 if (!CommonValidations.isStringEmpty(registrationBindingDTO.getUserName())) {
                     if (!CommonValidations.isStringEmpty(registrationBindingDTO.getPassword())) {
                         if (!CommonValidations.isStringEmpty(registrationBindingDTO.getConfrimPassword())) {
@@ -78,6 +79,10 @@ public class RegistrationSceneController implements Initializable, IScreenContro
                                 registrationDTO.setEmailAddress(registrationBindingDTO.getEmailAddress());
                                 registrationDTO.setPassword(registrationBindingDTO.getPassword());
                             } else {
+                                confirmPasswordTextField.setText(null);
+                                passwordTextField.setText(null);
+                                confirmPasswordTextField.setPromptText(GlobalConstants.passwordDoNotMatchMessage);
+                                passwordTextField.setPromptText(GlobalConstants.passwordDoNotMatchMessage);
                                 InvokeAnimation.attentionSeekerShake(confirmPasswordTextField);
                                 InvokeAnimation.attentionSeekerShake(passwordTextField);
                             }
@@ -91,12 +96,15 @@ public class RegistrationSceneController implements Initializable, IScreenContro
                     InvokeAnimation.attentionSeekerWobble(userNameTextField);
                 }
             } else {
+                if (!CommonValidations.isStringEmpty(registrationBindingDTO.getEmailAddress())) {
+                    emailAddressTextField.setText(null);
+                    emailAddressTextField.setPromptText(GlobalConstants.invalidEmailIDMessage);
+                }
                 InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
             }
         } else {
             InvokeAnimation.attentionSeekerWobble(fullNameTextField);
         }
-
     }
 
     @FXML
