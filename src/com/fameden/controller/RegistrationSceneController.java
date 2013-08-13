@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -24,6 +26,8 @@ import javafx.scene.control.TextField;
  */
 public class RegistrationSceneController implements Initializable, IScreenController {
 
+    @FXML
+    Button twitterSingUp;
     @FXML
     TextField fullNameTextField;
     @FXML
@@ -110,6 +114,12 @@ public class RegistrationSceneController implements Initializable, IScreenContro
     @FXML
     public void login() {
         System.out.println("Login");
-        System.exit(0);
+
+    }
+
+    @FXML
+    public void twitterSignUp() {
+        System.out.println("Twitter Sign Up");
+        myController.setScreen(GlobalConstants.twitterIntegrationScene);
     }
 }
