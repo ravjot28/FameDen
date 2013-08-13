@@ -11,10 +11,10 @@ import javafx.animation.Interpolator;
  * @author Ravjot
  */
 public class GlobalConstants {
-    
+    public static final String registrationLoginIconImage = "com/fameden/image/music1.png";
     public static final String registrationScene = "registrationScene";
     public static final String registrationSceneFXML = "RegistrationScene.fxml";
-    public static final String registrationSceneTitle = "Registration";
+    public static final String registrationSceneTitle = "Welcome To FameDen";
     public static final String registrationSceneIconImageLocation = "";
     public static final Interpolator WEB_EASE = Interpolator.SPLINE(0.25, 0.1, 0.25, 1);
     public static final String passwordDoNotMatchMessage = "Password Do Not Match";
@@ -24,6 +24,5 @@ public class GlobalConstants {
     public static final String twitterIntegrationSceneFXML = "TwitterIntegration.fxml";
     public static final String twitterAppKey = "QPrDwr29NEQCsS6ctjX6iQ";
     public static final String twitterSecretAppKey = "LvwRGBUpzrg4pv2ELnKKXIefxIskj1XQd5wbcE";
-    public static final String twitterSignUpImageIcon = "../image/support-apps-twitter.png.original.png";
     
 }
