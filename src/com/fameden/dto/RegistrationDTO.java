@@ -14,6 +14,15 @@ public class RegistrationDTO {
     private String emailAddress;
     private String userName;
     private String password;
+    private TwitterRegistrationDTO twitterRegistrationDTO;
+
+    public TwitterRegistrationDTO getTwitterRegistrationDTO() {
+        return twitterRegistrationDTO;
+    }
+
+    public void setTwitterRegistrationDTO(TwitterRegistrationDTO twitterRegistrationDTO) {
+        this.twitterRegistrationDTO = twitterRegistrationDTO;
+    }
 
     public String getFullName() {
         return fullName;

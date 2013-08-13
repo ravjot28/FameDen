@@ -71,13 +71,22 @@
             <Tooltip text="Click here to sign up after filling up the above details" wrapText="true" />
           </tooltip>
         </Button>
-        <Button defaultButton="true" layoutX="210.0" layoutY="6.0" mnemonicParsing="false" onAction="#login" prefHeight="34.9609375" text="Login">
+        <Button defaultButton="true" layoutX="210.0" layoutY="7.0" mnemonicParsing="false" onAction="#login" prefHeight="34.9609375" text="Login">
           <tooltip>
             <Tooltip autoHide="true" height="20.0" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0" text="Click here to login to the FameDen" width="200.0" wrapText="true" />
           </tooltip>
         </Button>
       </children>
     </Pane>
+    <Button fx:id="twitterSingUp" defaultButton="true" layoutX="584.0" layoutY="432.0" minHeight="27.999977929684974" minWidth="31.000099999997474" mnemonicParsing="false" onAction="#twitterSignUp" prefHeight="27.999977929684974" prefWidth="31.000099999997474">
+      <graphic>
+        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../image/support-apps-twitter.png.original.png" preserveRatio="false" smooth="false" />
+          </image>
+        </ImageView>
+      </graphic>
+    </Button>
   </children>
   <stylesheets>
     <URL value="@../css/registrationscene.css" />

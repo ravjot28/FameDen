@@ -22,7 +22,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         SceneNavigator sceneNavigator = new SceneNavigator();
         sceneNavigator.loadScreen(GlobalConstants.registrationScene, GlobalConstants.registrationSceneFXML);
-        
+        sceneNavigator.loadScreen(GlobalConstants.twitterIntegrationScene, GlobalConstants.twitterIntegrationSceneFXML);
         Group root = new Group();
         root.getChildren().addAll(sceneNavigator);
         root.autosize();
