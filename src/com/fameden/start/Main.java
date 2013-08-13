@@ -9,6 +9,7 @@ import com.fameden.fxml.SceneNavigator;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -36,7 +37,7 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.setTitle(GlobalConstants.registrationSceneTitle);
-        //stage.getIcons().add(new Image(GlobalConstants.registrationSceneIconImageLocation));
+        stage.getIcons().add(new Image(GlobalConstants.registrationLoginIconImage));
         stage.show();
     }
 
