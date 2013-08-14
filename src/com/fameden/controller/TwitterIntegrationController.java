@@ -22,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -46,13 +47,15 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
     TextField pinTextField;
     @FXML
     TextField emailAddressTextField;
+    @FXML
+    ImageView bg;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        bg.requestFocus();
         Task task = new Task<Void>() {
             @Override
             public Void call() {

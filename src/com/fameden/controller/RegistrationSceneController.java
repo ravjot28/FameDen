@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 public class RegistrationSceneController implements Initializable, IScreenController {
 
     @FXML
+    ImageView bg;
+    @FXML
     Button twitterSingUp;
     @FXML
     TextField fullNameTextField;
@@ -50,6 +52,7 @@ public class RegistrationSceneController implements Initializable, IScreenContro
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bg.requestFocus();
         Bindings.bindBidirectional(fullNameTextField.textProperty(), registrationBindingDTO.fullNameProperty());
         Bindings.bindBidirectional(emailAddressTextField.textProperty(), registrationBindingDTO.emailAddressProperty());
         Bindings.bindBidirectional(userNameTextField.textProperty(), registrationBindingDTO.userNameProperty());

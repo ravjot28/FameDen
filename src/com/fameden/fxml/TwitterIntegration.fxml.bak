@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="620.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="com.fameden.controller.TwitterIntegrationController">
   <children>
-    <ImageView fitHeight="473.9999694824219" fitWidth="631.9999593098958" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="bg" fitHeight="473.9999694824219" fitWidth="631.9999593098958" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@../image/Sound_of_Music_Wallpaper_by_greenaleydis.jpg" preserveRatio="false" smooth="false" />
       </image>
@@ -31,7 +31,7 @@
         </HBox>
         <HBox alignment="CENTER" cache="true" prefHeight="57.0" prefWidth="267.0">
           <children>
-            <PasswordField id="passwordTextField" fx:id="pin" prefHeight="36.0" prefWidth="230.0" promptText="Twitter Auth Pin" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;">
+            <PasswordField fx:id="pinTextField" prefHeight="36.0" prefWidth="230.0" promptText="Twitter Auth Pin" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;">
               <tooltip>
                 <Tooltip autoHide="true" height="20.0" maxHeight="20.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="20.0" prefWidth="200.0" text="Please enter 8 or more character password with alteast 1 spleacial character and 1 capital alphabet" width="200.0" wrapText="true" />
               </tooltip>

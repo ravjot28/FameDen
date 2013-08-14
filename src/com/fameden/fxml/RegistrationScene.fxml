@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="620.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="com.fameden.controller.RegistrationSceneController">
   <children>
-    <ImageView fitHeight="473.9999694824219" fitWidth="631.9999593098958" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="bg" fitHeight="473.9999694824219" fitWidth="631.9999593098958" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@../image/Sound_of_Music_Wallpaper_by_greenaleydis.jpg" preserveRatio="false" smooth="false" />
       </image>

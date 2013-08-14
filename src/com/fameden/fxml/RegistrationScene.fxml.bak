@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="620.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml" fx:controller="com.fameden.controller.RegistrationSceneController">
   <children>
-    <ImageView fitHeight="473.9999694824219" fitWidth="631.9999593098958" pickOnBounds="true" preserveRatio="true">
+    <ImageView fx:id="bg" fitHeight="473.9999694824219" fitWidth="631.9999593098958" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@../image/Sound_of_Music_Wallpaper_by_greenaleydis.jpg" preserveRatio="false" smooth="false" />
       </image>
@@ -78,7 +78,7 @@
         </Button>
       </children>
     </Pane>
-    <Button fx:id="twitterSingUp" layoutX="584.0" layoutY="432.0" minHeight="27.999977929684974" minWidth="31.000099999997474" mnemonicParsing="false" onAction="#twitterSignUp" prefHeight="27.999977929684974" prefWidth="31.000099999997474">
+    <Button fx:id="twitterSingUp" defaultButton="true" layoutX="584.0" layoutY="432.0" minHeight="27.999977929684974" minWidth="31.000099999997474" mnemonicParsing="false" onAction="#twitterSignUp" prefHeight="27.999977929684974" prefWidth="31.000099999997474">
       <graphic>
         <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
           <image>
