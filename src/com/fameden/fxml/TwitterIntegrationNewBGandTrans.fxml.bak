@@ -23,7 +23,7 @@
           <children>
             <TextField fx:id="emailAddressTextField" prefHeight="36.0" prefWidth="220.0" promptText="Email Address" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -32,7 +32,7 @@
           <children>
             <TextField id="userNameTextField" fx:id="pinTextField" prefHeight="36.0" prefWidth="220.0" promptText="Twitter Auth Code" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -41,7 +41,7 @@
           <children>
             <PasswordField fx:id="passwordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
@@ -50,7 +50,7 @@
           <children>
             <PasswordField fx:id="confirmPasswordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Re Enter Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
@@ -69,8 +69,8 @@
         <Image url="@../image/PleaseWait.gif" preserveRatio="false" smooth="false" />
       </image>
     </ImageView>
-    <Button defaultButton="true" layoutX="339.0" layoutY="399.0" mnemonicParsing="false" onAction="#reloadTwitterSignUp" text="Re Load Twitter Page" />
-    <ImageView fitHeight="316.0" fitWidth="316.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+    <Button defaultButton="true" layoutX="-1.0" layoutY="14.0" minWidth="13.0" mnemonicParsing="false" onAction="#reloadTwitterSignUp" prefHeight="406.0" prefWidth="15.0" text="Re Load Twitter Page" wrapText="true" />
+    <ImageView fx:id="noInternetConnection" fitHeight="316.0" fitWidth="316.0" layoutX="14.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
       <image>
         <Image url="@../image/tumblr_m2s8euYIx01qbe0gto1_400.gif" preserveRatio="false" smooth="false" />
       </image>
