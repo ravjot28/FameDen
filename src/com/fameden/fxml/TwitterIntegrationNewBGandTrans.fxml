@@ -17,13 +17,18 @@
         <Image url="@../image/FameDen1-BW+Gloom.jpg" preserveRatio="false" smooth="false" />
       </image>
     </ImageView>
+    <ImageView fitHeight="87.00000762939453" fitWidth="109.33333587646484" layoutX="331.0" layoutY="173.0" pickOnBounds="true">
+      <image>
+        <Image url="@../../../../../../../Desktop/bgGif/New%20folder%20(4)/output_uQ1eYu.gif" preserveRatio="false" smooth="false" />
+      </image>
+    </ImageView>
     <VBox layoutX="497.0" layoutY="68.0" prefHeight="297.0" prefWidth="261.0" style="-fx-background-color: rgba(245,245,245, 0.8);&#10;-fx-background-radius: 10;">
       <children>
         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
           <children>
             <TextField fx:id="emailAddressTextField" prefHeight="36.0" prefWidth="220.0" promptText="Email Address" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.03125" radius="3.5078125" width="8.0" />
+                <InnerShadow height="8.015625" radius="3.50390625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -32,7 +37,7 @@
           <children>
             <TextField id="userNameTextField" fx:id="pinTextField" prefHeight="36.0" prefWidth="220.0" promptText="Twitter Auth Code" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.03125" radius="3.5078125" width="8.0" />
+                <InnerShadow height="8.015625" radius="3.50390625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -41,7 +46,7 @@
           <children>
             <PasswordField fx:id="passwordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.03125" radius="3.5078125" width="8.0" />
+                <InnerShadow height="8.015625" radius="3.50390625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
@@ -50,7 +55,7 @@
           <children>
             <PasswordField fx:id="confirmPasswordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Re Enter Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.03125" radius="3.5078125" width="8.0" />
+                <InnerShadow height="8.015625" radius="3.50390625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
