@@ -22,7 +22,7 @@
           <children>
             <TextField fx:id="fullNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Full Name" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.5" radius="3.625" width="8.0" />
+                <InnerShadow height="8.25" radius="3.5625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -31,16 +31,16 @@
           <children>
             <TextField fx:id="emailAddressTextField" prefHeight="36.0" prefWidth="220.0" promptText="Email Address" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.5" radius="3.625" width="8.0" />
+                <InnerShadow height="8.25" radius="3.5625" width="8.0" />
               </effect>
             </TextField>
           </children>
         </HBox>
         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
           <children>
-            <TextField fx:id="userNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="User Name" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
+            <TextField fx:id="alternateEmailAddressTextField" prefHeight="36.0" prefWidth="220.0" promptText="Alternate Email Address" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.5" radius="3.625" width="8.0" />
+                <InnerShadow height="8.25" radius="3.5625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -49,7 +49,7 @@
           <children>
             <PasswordField fx:id="passwordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.5" radius="3.625" width="8.0" />
+                <InnerShadow height="8.25" radius="3.5625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
@@ -58,7 +58,7 @@
           <children>
             <PasswordField fx:id="confirmPasswordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Re Enter Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.5" radius="3.625" width="8.0" />
+                <InnerShadow height="8.25" radius="3.5625" width="8.0" />
               </effect>
             </PasswordField>
           </children>

@@ -12,7 +12,7 @@ public class RegistrationDTO {
 
     private String fullName;
     private String emailAddress;
-    private String userName;
+    private String alternateEmailAddress;
     private String password;
     private TwitterRegistrationDTO twitterRegistrationDTO;
 
@@ -40,12 +40,12 @@ public class RegistrationDTO {
         this.emailAddress = emailAddress;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getAlternateEmailAddress() {
+        return alternateEmailAddress;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAlternateEmailAddress(String alternateEmailAddress) {
+        this.alternateEmailAddress = alternateEmailAddress;
     }
 
     public String getPassword() {

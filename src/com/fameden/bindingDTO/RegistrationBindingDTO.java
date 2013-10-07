@@ -16,7 +16,7 @@ public class RegistrationBindingDTO implements Serializable {
 
     private StringProperty fullName = new SimpleStringProperty();
     private StringProperty emailAddress = new SimpleStringProperty();
-    private StringProperty userName = new SimpleStringProperty();
+    private StringProperty alternateEmailAddress = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private StringProperty confrimPassword = new SimpleStringProperty();
 
@@ -44,16 +44,16 @@ public class RegistrationBindingDTO implements Serializable {
         return emailAddress;
     }
 
-    public String getUserName() {
-        return userName.get();
+    public String getAlternateEmailAddress() {
+        return alternateEmailAddress.get();
     }
 
-    public void setUserName(String userName) {
-        this.userName.set(userName);
+    public void setAlternateEmailAddress(String alternateEmailAddress) {
+        this.alternateEmailAddress.set(alternateEmailAddress);
     }
 
-    public StringProperty userNameProperty() {
-        return userName;
+    public StringProperty alternateEmailAddressProperty() {
+        return alternateEmailAddress;
     }
 
     public String getPassword() {

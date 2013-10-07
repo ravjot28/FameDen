@@ -10,6 +10,7 @@ import com.fameden.dto.RegistrationDTO;
 import com.fameden.fxml.SceneNavigator;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.InvokeAnimation;
+import com.fameden.util.RSAEncryption;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
@@ -36,7 +37,7 @@ public class RegistrationSceneController implements Initializable, IScreenContro
     @FXML
     TextField emailAddressTextField;
     @FXML
-    TextField userNameTextField;
+    TextField alternateEmailAddressTextField;
     @FXML
     PasswordField passwordTextField;
     @FXML
@@ -56,7 +57,7 @@ public class RegistrationSceneController implements Initializable, IScreenContro
         bg.requestFocus();
         Bindings.bindBidirectional(fullNameTextField.textProperty(), registrationBindingDTO.fullNameProperty());
         Bindings.bindBidirectional(emailAddressTextField.textProperty(), registrationBindingDTO.emailAddressProperty());
-        Bindings.bindBidirectional(userNameTextField.textProperty(), registrationBindingDTO.userNameProperty());
+        Bindings.bindBidirectional(alternateEmailAddressTextField.textProperty(), registrationBindingDTO.alternateEmailAddressProperty());
         Bindings.bindBidirectional(passwordTextField.textProperty(), registrationBindingDTO.passwordProperty());
         Bindings.bindBidirectional(confirmPasswordTextField.textProperty(), registrationBindingDTO.confrimPasswordProperty());
     }
@@ -72,20 +73,20 @@ public class RegistrationSceneController implements Initializable, IScreenContro
 
         if (!CommonValidations.isStringEmpty(registrationBindingDTO.getFullName())) {
             if (CommonValidations.isValidEmailAddress(registrationBindingDTO.getEmailAddress())) {
-                if (!CommonValidations.isStringEmpty(registrationBindingDTO.getUserName())) {
+                if (CommonValidations.isValidEmailAddress(registrationBindingDTO.getAlternateEmailAddress())) {
                     if (!CommonValidations.isStringEmpty(registrationBindingDTO.getPassword())) {
                         if (!CommonValidations.isStringEmpty(registrationBindingDTO.getConfrimPassword())) {
                             if (registrationBindingDTO.getPassword().equals(registrationBindingDTO.getConfrimPassword())) {
                                 System.out.println("fullNameTextField " + registrationBindingDTO.getFullName());
                                 System.out.println("emailAddressTextField " + registrationBindingDTO.getEmailAddress());
-                                System.out.println("userNameTextField " + registrationBindingDTO.getUserName());
+                                System.out.println("alternateEmailAddressTextField " + registrationBindingDTO.getAlternateEmailAddress());
                                 System.out.println("passwordTextField " + registrationBindingDTO.getPassword());
                                 System.out.println("confirmPasswordTextField " + registrationBindingDTO.getConfrimPassword());
                                 RegistrationDTO registrationDTO = new RegistrationDTO();
                                 registrationDTO.setFullName(registrationBindingDTO.getFullName());
-                                registrationDTO.setUserName(registrationBindingDTO.getUserName());
+                                registrationDTO.setAlternateEmailAddress(registrationBindingDTO.getAlternateEmailAddress());
                                 registrationDTO.setEmailAddress(registrationBindingDTO.getEmailAddress());
-                                registrationDTO.setPassword(registrationBindingDTO.getPassword());
+                                registrationDTO.setPassword(RSAEncryption.encrypt(registrationBindingDTO.getPassword()));
                             } else {
                                 confirmPasswordTextField.setText(null);
                                 passwordTextField.setText(null);
@@ -101,7 +102,11 @@ public class RegistrationSceneController implements Initializable, IScreenContro
                         InvokeAnimation.attentionSeekerWobble(passwordTextField);
                     }
                 } else {
-                    InvokeAnimation.attentionSeekerWobble(userNameTextField);
+                    if (!CommonValidations.isStringEmpty(registrationBindingDTO.getAlternateEmailAddress())) {
+                    alternateEmailAddressTextField.setText(null);
+                    alternateEmailAddressTextField.setPromptText(GlobalConstants.invalidEmailIDMessage);
+                }
+                    InvokeAnimation.attentionSeekerWobble(alternateEmailAddressTextField);
                 }
             } else {
                 if (!CommonValidations.isStringEmpty(registrationBindingDTO.getEmailAddress())) {
