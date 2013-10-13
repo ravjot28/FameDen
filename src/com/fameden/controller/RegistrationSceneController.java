@@ -18,6 +18,7 @@ import com.fameden.exceptions.PasswordDoNotMatchException;
 import com.fameden.fxml.SceneNavigator;
 import com.fameden.service.RegistrationService;
 import com.fameden.util.InvokeAnimation;
+import com.fameden.webservice.contracts.registration.FamedenRegistrationResponse;
 import java.net.URL;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.Initializable;
@@ -94,7 +95,20 @@ public class RegistrationSceneController implements Initializable, IScreenContro
             registrationDTO.setAlternateEmailAddress(registrationBindingDTO.getAlternateEmailAddress());
             registrationDTO.setEmailAddress(registrationBindingDTO.getEmailAddress());
             registrationDTO.setPassword(registrationBindingDTO.getPassword());
-            service.processRequest(registrationDTO);
+            FamedenRegistrationResponse response = (FamedenRegistrationResponse) service.processRequest(registrationDTO);
+            if (response == null) {
+
+                logger.info("Error");
+            } else if (response.getStatus().equals(GlobalConstants.SUCCESS)) {
+                myController.setScreen(GlobalConstants.loginScene);
+            } else {
+                logger.info(response.getErrorMessage());
+                if (response.getErrorMessage().equals(GlobalConstants.userAlreadyExisitsMessage)) {
+                    emailAddressTextField.setText(null);
+                    emailAddressTextField.setPromptText(GlobalConstants.userAlreadyExisitsMessage);
+                    InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
+                }
+            }
         } catch (PasswordDoNotMatchException ex) {
             logger.error(ex.getMessage(), ex);
             confirmPasswordTextField.setText(null);

@@ -73,15 +73,16 @@ public class RegistrationService implements ICommonService {
     public Object processRequest(Object obj) throws PasswordDoNotMatchException, InvalidConfirmPassword,
             InvalidAlternateEmailAddressException, EmptyAlternateEmailAddressException, InvalidPasswordException, InvalidEmailAddressException,
             EmptyEmailAddressException, InvalidFullNameException, Exception {
+        FamedenRegistrationResponse response = null;
         logger.info("in processRequest");
         try {
             validate(obj);
             logger.info(((RegistrationDTO) obj).getPassword());
             ((RegistrationDTO) obj).setPassword(RSAEncryption.encryptText(((RegistrationDTO) obj).getPassword()));
-             logger.info("in processRequest");
-             RegistrationService_Service rs = new RegistrationService_Service();
-             logger.info("Hitting webservice");
-             FamedenRegistrationResponse response = rs.getRegistrationPort().registerUser((FamedenRegistrationRequest) populateModel(obj));
+            logger.info("in processRequest");
+            RegistrationService_Service rs = new RegistrationService_Service();
+            logger.info("Hitting webservice");
+            response = rs.getRegistrationPort().registerUser((FamedenRegistrationRequest) populateModel(obj));
         } catch (PasswordDoNotMatchException ex) {
             throw ex;
         } catch (InvalidConfirmPassword ex) {
@@ -101,7 +102,7 @@ public class RegistrationService implements ICommonService {
         } catch (Exception ex) {
             throw ex;
         }
-        return null;
+        return response;
     }
 
     @Override

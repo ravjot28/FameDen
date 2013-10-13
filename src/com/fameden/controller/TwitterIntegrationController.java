@@ -17,6 +17,7 @@ import com.fameden.fxml.SceneNavigator;
 import com.fameden.service.TwitterRegistrationService;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.InvokeAnimation;
+import com.fameden.webservice.contracts.registration.FamedenRegistrationResponse;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -42,6 +43,7 @@ import twitter4j.auth.RequestToken;
  * @author Ravjot
  */
 public class TwitterIntegrationController implements Initializable, IScreenController {
+
     static Logger logger = LoggerFactory.getLogger(TwitterIntegrationController.class);
     SceneNavigator myController;
     TwitterRegistrationService service;
@@ -130,7 +132,7 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
                 twitter.setOAuthAccessToken(accessToken);
                 String token = accessToken.getToken();
                 String secretToken = accessToken.getTokenSecret();
-                System.out.println(token+"  "+secretToken);
+                System.out.println(token + "  " + secretToken);
                 TwitterRegistrationDTO twitterRegistrationDTO = new TwitterRegistrationDTO();
                 twitterRegistrationDTO.setToken(token);
                 twitterRegistrationDTO.setTokenSecret(secretToken);
@@ -143,7 +145,20 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
 
                 try {
                     service = new TwitterRegistrationService();
-                    service.processRequest(registrationDTO);
+                    FamedenRegistrationResponse response = (FamedenRegistrationResponse) service.processRequest(registrationDTO);
+                    if (response == null) {
+
+                        logger.info("Error");
+                    } else if (response.getStatus().equals(GlobalConstants.SUCCESS)) {
+                        myController.setScreen(GlobalConstants.loginScene);
+                    } else {
+                        logger.info(response.getErrorMessage());
+                        if (response.getErrorMessage().equals(GlobalConstants.userAlreadyExisitsMessage)) {
+                            emailAddressTextField.setText(null);
+                            emailAddressTextField.setPromptText(GlobalConstants.userAlreadyExisitsMessage);
+                            InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
+                        }
+                    }
                 } catch (PasswordDoNotMatchException ex) {
                     logger.error(ex.getMessage(), ex);
                     confirmPasswordTextField.setText(null);
