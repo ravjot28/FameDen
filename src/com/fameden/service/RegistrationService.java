@@ -4,6 +4,7 @@
  */
 package com.fameden.service;
 
+import com.fameden.constants.RegistrationConstants;
 import com.fameden.dto.RegistrationDTO;
 import com.fameden.exceptions.EmptyAlternateEmailAddressException;
 import com.fameden.exceptions.EmptyEmailAddressException;
@@ -14,6 +15,7 @@ import com.fameden.exceptions.InvalidFullNameException;
 import com.fameden.exceptions.InvalidPasswordException;
 import com.fameden.exceptions.PasswordDoNotMatchException;
 import com.fameden.util.CommonValidations;
+import com.fameden.util.GetIP;
 import com.fameden.util.RSAEncryption;
 import com.fameden.webservice.contracts.registration.FamedenRegistrationRequest;
 import com.fameden.webservice.contracts.registration.FamedenRegistrationResponse;
@@ -107,14 +109,14 @@ public class RegistrationService implements ICommonService {
         FamedenRegistrationRequest request = new FamedenRegistrationRequest();
         RegistrationDTO registrationDTO = (RegistrationDTO) obj;
         request.setAlternateEmailAddress(registrationDTO.getAlternateEmailAddress());
-        request.setCustomerIP(null);
+        request.setCustomerIP(GetIP.getIP());
         request.setEmailAddress(registrationDTO.getEmailAddress());
         request.setFullName(registrationDTO.getFullName());
         request.setPassword(registrationDTO.getPassword());
         request.setPrivateToken(null);
         request.setPublicToken(null);
-        request.setRegistrationType(null);
-        request.setRequestType(null);
+        request.setRegistrationType(RegistrationConstants.famedenRegistrationType);
+        request.setRequestType(RegistrationConstants.requestType);
         return request;
     }
 }

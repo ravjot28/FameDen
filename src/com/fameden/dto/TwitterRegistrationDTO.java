@@ -12,7 +12,6 @@ public class TwitterRegistrationDTO {
 
     private String token;
     private String tokenSecret;
-    private long userId;
 
     public String getToken() {
         return token;
@@ -28,13 +27,5 @@ public class TwitterRegistrationDTO {
 
     public void setTokenSecret(String tokenSecret) {
         this.tokenSecret = tokenSecret;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 }

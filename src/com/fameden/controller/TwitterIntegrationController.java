@@ -28,6 +28,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -40,7 +42,7 @@ import twitter4j.auth.RequestToken;
  * @author Ravjot
  */
 public class TwitterIntegrationController implements Initializable, IScreenController {
-
+    static Logger logger = LoggerFactory.getLogger(TwitterIntegrationController.class);
     SceneNavigator myController;
     TwitterRegistrationService service;
     TwitterIntegrationBindingDTO twitterIntegrationBindingDTO;
@@ -123,15 +125,15 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
     public void pinProcess() throws TwitterException {
         if (!CommonValidations.isStringEmpty(twitterIntegrationBindingDTO.getTwitterPin())) {
             if (requestToken != null && twitter != null && pinTextField.getText() != null) {
+                System.out.println(pinTextField.getText());
                 AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, pinTextField.getText());
                 twitter.setOAuthAccessToken(accessToken);
                 String token = accessToken.getToken();
                 String secretToken = accessToken.getTokenSecret();
-                long userId = twitter.verifyCredentials().getId();
+                System.out.println(token+"  "+secretToken);
                 TwitterRegistrationDTO twitterRegistrationDTO = new TwitterRegistrationDTO();
                 twitterRegistrationDTO.setToken(token);
                 twitterRegistrationDTO.setTokenSecret(secretToken);
-                twitterRegistrationDTO.setUserId(userId);
 
                 RegistrationDTO registrationDTO = new RegistrationDTO();
                 registrationDTO.setTwitterRegistrationDTO(twitterRegistrationDTO);
