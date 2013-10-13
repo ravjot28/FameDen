@@ -10,6 +10,7 @@ import com.fameden.constants.GlobalConstants;
 import com.fameden.dto.ForgotPasswordDTO;
 import com.fameden.dto.LoginDTO;
 import com.fameden.fxml.SceneNavigator;
+import com.fameden.service.LoginService;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.InvokeAnimation;
 import java.net.URL;
@@ -27,7 +28,9 @@ import javafx.scene.layout.VBox;
 public class LoginSceneController implements Initializable, IScreenController {
 
     @FXML
-    private TextField famedenUserNameTextField, twitterUserNameTextField, passwordTextField, forgotUserNameTextField, forgotEmailTextField;
+    private TextField famedenUserNameTextField, passwordTextField ;
+    @FXML
+    private TextField forgotUserNameTextField, forgotEmailTextField;
     @FXML
     private VBox forgotPasswordVBox;
     private LoginBindingDTO loginBindingDTO;
@@ -58,15 +61,17 @@ public class LoginSceneController implements Initializable, IScreenController {
 
     @FXML
     public void login() {
-        if (!CommonValidations.isStringEmpty(loginBindingDTO.getEmailID())) {
-            if (!CommonValidations.isStringEmpty(loginBindingDTO.getPassword())) {
-
                 loginDTO = new LoginDTO();
                 loginDTO.setEmailID(loginBindingDTO.getEmailID());
                 loginDTO.setPassword(loginBindingDTO.getPassword());
 
-                //TODO Call Login Service and Receive returning object
-
+                LoginService service = new LoginService();
+               loginDTO = (LoginDTO) service.processRequest(loginDTO);
+                
+                   if (!loginDTO.isIsEmailIDNull()) {
+            if (!loginDTO.isIsPasswordNull()) {
+                
+                //Call next screen    
             } else {
                 InvokeAnimation.attentionSeekerWobble(passwordTextField);
             }
@@ -113,7 +118,7 @@ public class LoginSceneController implements Initializable, IScreenController {
                 }
 
             } else if (!CommonValidations.isStringEmpty(forgotPasswordBindingDTO.getUserName())) {
-                forgotPasswordDTO.setUserName(forgotPasswordBindingDTO.getUserName());
+                //forgotPasswordDTO.setUserName(forgotPasswordBindingDTO.getUserName());
                 //TODO Logic to send Verification email.
             }
         } else {

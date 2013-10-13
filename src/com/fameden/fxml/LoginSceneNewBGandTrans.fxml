@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="433.49998474121094" prefWidth="771.6666870117188" xmlns:fx="http://javafx.com/fxml" fx:controller="com.fameden.controller.LoginSceneController">
+<AnchorPane id="AnchorPane" prefHeight="433.49998474121094" prefWidth="771.6666870117188" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.fameden.controller.LoginSceneController">
   <children>
     <ImageView fx:id="bg" fitHeight="433.5" fitWidth="770.666695666519" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
       <image>
@@ -22,18 +22,9 @@
       <children>
         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
           <children>
-            <TextField id="fullNameTextField" fx:id="famedenUserNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Username/Email ID" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
+            <TextField id="fullNameTextField" fx:id="famedenUserNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Email-ID" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
-              </effect>
-            </TextField>
-          </children>
-        </HBox>
-        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
-          <children>
-            <TextField id="emailAddressTextField" fx:id="twitterUserNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Twitter UserName" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
-              <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -42,7 +33,7 @@
           <children>
             <PasswordField fx:id="passwordTextField" prefHeight="36.0" prefWidth="220.0" promptText="Password" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.125" radius="3.53125" width="8.0" />
+                <InnerShadow height="8.0625" radius="3.515625" width="8.0" />
               </effect>
             </PasswordField>
           </children>
@@ -53,6 +44,23 @@
             <Button defaultButton="true" layoutX="197.0" layoutY="10.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" text="Login" />
           </children>
         </Pane>
+        <HBox id="HBox" alignment="CENTER_LEFT" fillHeight="true" opacity="0.85" spacing="30.0">
+          <children>
+            <ImageView fitHeight="46.5" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../image/fb_icon.png" />
+              </image>
+            </ImageView>
+            <ImageView fitHeight="46.499977929684974" fitWidth="46.499977929684974" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../image/52px-Twitter_bird.png" />
+              </image>
+            </ImageView>
+          </children>
+          <padding>
+            <Insets left="20.0" right="20.0" />
+          </padding>
+        </HBox>
       </children>
     </VBox>
     <Hyperlink layoutX="543.0" layoutY="366.0" onAction="#forgotPassword" style="-fx-fill:white;" text="Yikes! forgot password" textFill="WHITE">
@@ -66,7 +74,7 @@
           <children>
             <TextField id="fullNameTextField" fx:id="forgotUserNameTextField" prefHeight="36.0" prefWidth="220.0" promptText="Fameden Username" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.001953125" radius="3.50048828125" width="8.0" />
+                <InnerShadow height="8.0009765625" radius="3.500244140625" width="8.0" />
               </effect>
             </TextField>
           </children>
@@ -84,7 +92,7 @@
           <children>
             <TextField id="emailAddressTextField" fx:id="forgotEmailTextField" prefHeight="36.0" prefWidth="220.0" promptText="Registered E-mail ID" style="-fx-font: 17px Tahoma;&#10;-fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);&#10;-fx-stroke: black;&#10;-fx-stroke-width: 1;&#10; -fx-prompt-text-fill:grey;">
               <effect>
-                <InnerShadow height="8.001953125" radius="3.50048828125" width="8.0" />
+                <InnerShadow height="8.0009765625" radius="3.500244140625" width="8.0" />
               </effect>
             </TextField>
           </children>

@@ -65,7 +65,7 @@ public class ForgotPasswordSceneController implements Initializable, IScreenCont
 
                 forgotPasswordDTO = new ForgotPasswordDTO();
                 forgotPasswordDTO.setEmailID(this.forgotPasswordBindingDTO.getEmailID());
-                forgotPasswordDTO.setUserName(this.forgotPasswordBindingDTO.getUserName());
+                //forgotPasswordDTO.setUserName(this.forgotPasswordBindingDTO.getUserName());
                 
                 //TODO Call Login Service and Receive returning object
 
