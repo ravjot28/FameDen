@@ -20,7 +20,7 @@ import com.fameden.webservice.contracts.registration.ObjectFactory;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "registrationService", targetNamespace = "http://contracts.webservice.fameden.com/")
+@WebService(name = "registrationService", targetNamespace = "http://registration.contracts.webservice.fameden.com/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
@@ -31,13 +31,13 @@ public interface RegistrationService {
      * 
      * @param registrationRequest
      * @return
-     *     returns com.fameden.webservice.contracts.FamedenRegistrationResponse
+     *     returns com.fameden.webservice.contracts.registration.FamedenRegistrationResponse
      */
     @WebMethod
     @WebResult(name = "registrationResponse", targetNamespace = "")
-    @RequestWrapper(localName = "registerUser", targetNamespace = "http://contracts.webservice.fameden.com/", className = "com.fameden.webservice.contracts.RegisterUser")
-    @ResponseWrapper(localName = "registerUserResponse", targetNamespace = "http://contracts.webservice.fameden.com/", className = "com.fameden.webservice.contracts.RegisterUserResponse")
-    @Action(input = "http://contracts.webservice.fameden.com/registrationService/registerUserRequest", output = "http://contracts.webservice.fameden.com/registrationService/registerUserResponse")
+    @RequestWrapper(localName = "registerUser", targetNamespace = "http://registration.contracts.webservice.fameden.com/", className = "com.fameden.webservice.contracts.registration.RegisterUser")
+    @ResponseWrapper(localName = "registerUserResponse", targetNamespace = "http://registration.contracts.webservice.fameden.com/", className = "com.fameden.webservice.contracts.registration.RegisterUserResponse")
+    @Action(input = "http://registration.contracts.webservice.fameden.com/registrationService/registerUserRequest", output = "http://registration.contracts.webservice.fameden.com/registrationService/registerUserResponse")
     public FamedenRegistrationResponse registerUser(
         @WebParam(name = "registrationRequest", targetNamespace = "")
         FamedenRegistrationRequest registrationRequest);

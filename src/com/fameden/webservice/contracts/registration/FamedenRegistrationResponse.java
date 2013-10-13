@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="famedenRegistrationResponse">
  *   &lt;complexContent>
- *     &lt;extension base="{http://contracts.webservice.fameden.com/}genericResponse">
+ *     &lt;extension base="{http://registration.contracts.webservice.fameden.com/}genericResponse">
  *       &lt;sequence>
  *       &lt;/sequence>
  *     &lt;/extension>

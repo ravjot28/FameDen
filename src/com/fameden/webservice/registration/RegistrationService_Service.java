@@ -17,14 +17,14 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "registrationService", targetNamespace = "http://webservice.fameden.com/", wsdlLocation = "http://rav-pc:8080/FameDenWS/registrationService?wsdl")
+@WebServiceClient(name = "registrationService", targetNamespace = "http://registration.webservice.fameden.com/", wsdlLocation = "http://rav-pc:8080/FameDenWS/registrationService?wsdl")
 public class RegistrationService_Service
     extends Service
 {
 
     private final static URL REGISTRATIONSERVICE_WSDL_LOCATION;
     private final static WebServiceException REGISTRATIONSERVICE_EXCEPTION;
-    private final static QName REGISTRATIONSERVICE_QNAME = new QName("http://webservice.fameden.com/", "registrationService");
+    private final static QName REGISTRATIONSERVICE_QNAME = new QName("http://registration.webservice.fameden.com/", "registrationService");
 
     static {
         URL url = null;
@@ -69,7 +69,7 @@ public class RegistrationService_Service
      */
     @WebEndpoint(name = "RegistrationPort")
     public RegistrationService getRegistrationPort() {
-        return super.getPort(new QName("http://webservice.fameden.com/", "RegistrationPort"), RegistrationService.class);
+        return super.getPort(new QName("http://registration.webservice.fameden.com/", "RegistrationPort"), RegistrationService.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class RegistrationService_Service
      */
     @WebEndpoint(name = "RegistrationPort")
     public RegistrationService getRegistrationPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://webservice.fameden.com/", "RegistrationPort"), RegistrationService.class, features);
+        return super.getPort(new QName("http://registration.webservice.fameden.com/", "RegistrationPort"), RegistrationService.class, features);
     }
 
     private static URL __getWsdlLocation() {

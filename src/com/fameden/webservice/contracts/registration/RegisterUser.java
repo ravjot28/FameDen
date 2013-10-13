@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="registrationRequest" type="{http://contracts.webservice.fameden.com/}famedenRegistrationRequest" minOccurs="0"/>
+ *         &lt;element name="registrationRequest" type="{http://registration.contracts.webservice.fameden.com/}famedenRegistrationRequest" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

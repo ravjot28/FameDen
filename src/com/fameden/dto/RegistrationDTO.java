@@ -14,6 +14,7 @@ public class RegistrationDTO {
     private String emailAddress;
     private String alternateEmailAddress;
     private String password;
+    private String confirmPassword;
     private TwitterRegistrationDTO twitterRegistrationDTO;
 
     public TwitterRegistrationDTO getTwitterRegistrationDTO() {
@@ -54,5 +55,13 @@ public class RegistrationDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

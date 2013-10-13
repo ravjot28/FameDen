@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="famedenRegistrationRequest">
  *   &lt;complexContent>
- *     &lt;extension base="{http://contracts.webservice.fameden.com/}genericRequest">
+ *     &lt;extension base="{http://registration.contracts.webservice.fameden.com/}genericRequest">
  *       &lt;sequence>
  *         &lt;element name="alternateEmailAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="fullName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>

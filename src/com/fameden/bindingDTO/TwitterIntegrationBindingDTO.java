@@ -4,6 +4,7 @@
  */
 package com.fameden.bindingDTO;
 
+import java.io.Serializable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -11,22 +12,9 @@ import javafx.beans.property.StringProperty;
  *
  * @author Ravjot
  */
-public class TwitterIntegrationBindingDTO {
+public class TwitterIntegrationBindingDTO extends CommonBindingDTO implements Serializable {
 
-    private StringProperty emailAddress = new SimpleStringProperty();
     private StringProperty twitterPin = new SimpleStringProperty();
-
-    public String getEmailAddress() {
-        return emailAddress.get();
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress.set(emailAddress);
-    }
-
-    public StringProperty emailAddressProperty() {
-        return emailAddress;
-    }
 
     public String getTwitterPin() {
         return twitterPin.get();

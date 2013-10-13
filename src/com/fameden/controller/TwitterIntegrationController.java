@@ -6,9 +6,15 @@ package com.fameden.controller;
 
 import com.fameden.bindingDTO.TwitterIntegrationBindingDTO;
 import com.fameden.constants.GlobalConstants;
+import static com.fameden.controller.RegistrationSceneController.logger;
 import com.fameden.dto.RegistrationDTO;
 import com.fameden.dto.TwitterRegistrationDTO;
+import com.fameden.exceptions.EmptyEmailAddressException;
+import com.fameden.exceptions.InvalidEmailAddressException;
+import com.fameden.exceptions.InvalidPasswordException;
+import com.fameden.exceptions.PasswordDoNotMatchException;
 import com.fameden.fxml.SceneNavigator;
+import com.fameden.service.TwitterRegistrationService;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.InvokeAnimation;
 import java.net.URL;
@@ -36,6 +42,7 @@ import twitter4j.auth.RequestToken;
 public class TwitterIntegrationController implements Initializable, IScreenController {
 
     SceneNavigator myController;
+    TwitterRegistrationService service;
     TwitterIntegrationBindingDTO twitterIntegrationBindingDTO;
     Twitter twitter;
     RequestToken requestToken;
@@ -78,7 +85,8 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
         twitterIntegrationBindingDTO = new TwitterIntegrationBindingDTO();
         Bindings.bindBidirectional(pinTextField.textProperty(), twitterIntegrationBindingDTO.twitterPinProperty());
         Bindings.bindBidirectional(emailAddressTextField.textProperty(), twitterIntegrationBindingDTO.emailAddressProperty());
-
+        Bindings.bindBidirectional(passwordTextField.textProperty(), twitterIntegrationBindingDTO.passwordProperty());
+        Bindings.bindBidirectional(confirmPasswordTextField.textProperty(), twitterIntegrationBindingDTO.confrimPasswordProperty());
 
     }
 
@@ -113,33 +121,54 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
 
     @FXML
     public void pinProcess() throws TwitterException {
-        if (CommonValidations.isValidEmailAddress(twitterIntegrationBindingDTO.getEmailAddress())) {
-            if (!CommonValidations.isStringEmpty(twitterIntegrationBindingDTO.getTwitterPin())) {
-                if (requestToken != null && twitter != null && pinTextField.getText() != null) {
-                    AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, pinTextField.getText());
-                    twitter.setOAuthAccessToken(accessToken);
-                    String token = accessToken.getToken();
-                    String secretToken = accessToken.getTokenSecret();
-                    long userId = twitter.verifyCredentials().getId();
-                    TwitterRegistrationDTO twitterRegistrationDTO = new TwitterRegistrationDTO();
-                    twitterRegistrationDTO.setToken(token);
-                    twitterRegistrationDTO.setTokenSecret(secretToken);
-                    twitterRegistrationDTO.setUserId(userId);
+        if (!CommonValidations.isStringEmpty(twitterIntegrationBindingDTO.getTwitterPin())) {
+            if (requestToken != null && twitter != null && pinTextField.getText() != null) {
+                AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, pinTextField.getText());
+                twitter.setOAuthAccessToken(accessToken);
+                String token = accessToken.getToken();
+                String secretToken = accessToken.getTokenSecret();
+                long userId = twitter.verifyCredentials().getId();
+                TwitterRegistrationDTO twitterRegistrationDTO = new TwitterRegistrationDTO();
+                twitterRegistrationDTO.setToken(token);
+                twitterRegistrationDTO.setTokenSecret(secretToken);
+                twitterRegistrationDTO.setUserId(userId);
 
-                    RegistrationDTO registrationDTO = new RegistrationDTO();
-                    registrationDTO.setTwitterRegistrationDTO(twitterRegistrationDTO);
-                    registrationDTO.setEmailAddress(twitterIntegrationBindingDTO.getEmailAddress());
+                RegistrationDTO registrationDTO = new RegistrationDTO();
+                registrationDTO.setTwitterRegistrationDTO(twitterRegistrationDTO);
+                registrationDTO.setEmailAddress(twitterIntegrationBindingDTO.getEmailAddress());
+                registrationDTO.setConfirmPassword(twitterIntegrationBindingDTO.getConfrimPassword());
+                registrationDTO.setPassword(twitterIntegrationBindingDTO.getPassword());
+
+                try {
+                    service = new TwitterRegistrationService();
+                    service.processRequest(registrationDTO);
+                } catch (PasswordDoNotMatchException ex) {
+                    logger.error(ex.getMessage(), ex);
+                    confirmPasswordTextField.setText(null);
+                    passwordTextField.setText(null);
+                    confirmPasswordTextField.setPromptText(GlobalConstants.passwordDoNotMatchMessage);
+                    passwordTextField.setPromptText(GlobalConstants.passwordDoNotMatchMessage);
+                    InvokeAnimation.attentionSeekerShake(confirmPasswordTextField);
+                    InvokeAnimation.attentionSeekerShake(passwordTextField);
+                } catch (InvalidPasswordException ex) {
+                    logger.error(ex.getMessage(), ex);
+                    InvokeAnimation.attentionSeekerWobble(passwordTextField);
+                } catch (InvalidEmailAddressException ex) {
+                    logger.error(ex.getMessage(), ex);
+                    emailAddressTextField.setText(null);
+                    emailAddressTextField.setPromptText(GlobalConstants.invalidEmailIDMessage);
+                    InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
+                } catch (EmptyEmailAddressException ex) {
+                    logger.error(ex.getMessage(), ex);
+                    InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
+                } catch (Exception ex) {
+                    logger.error(ex.getMessage(), ex);
                 }
-            } else {
-                InvokeAnimation.attentionSeekerWobble(pinTextField);
             }
         } else {
-            if (!CommonValidations.isStringEmpty(twitterIntegrationBindingDTO.getEmailAddress())) {
-                emailAddressTextField.setText(null);
-                emailAddressTextField.setPromptText(GlobalConstants.invalidEmailIDMessage);
-            }
-            InvokeAnimation.attentionSeekerWobble(emailAddressTextField);
+            InvokeAnimation.attentionSeekerWobble(pinTextField);
         }
+
     }
 
     @FXML
@@ -161,9 +190,9 @@ public class TwitterIntegrationController implements Initializable, IScreenContr
     public void displayWebView() {
         Platform.runLater(new Runnable() {
             public void run() {
-                
+
                 InvokeAnimation.disappearByFading(pleaseWait);
-                
+
                 pleaseWait.setVisible(false);
                 webView.getEngine().load(requestToken.getAuthorizationURL());
                 webView.setVisible(true);

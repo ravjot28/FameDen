@@ -12,7 +12,7 @@ public interface ICommonService {
     
     	public boolean validate(Object obj) throws Exception;
 	
-	public Object processRequest(Object obj);
+	public Object processRequest(Object obj) throws Exception;
 	
 	public Object populateModel(Object obj);
 }

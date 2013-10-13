@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.fameden.webservice.contracts package. 
+ * generated in the com.fameden.webservice.contracts.registration package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,11 +24,11 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _RegisterUserResponse_QNAME = new QName("http://contracts.webservice.fameden.com/", "registerUserResponse");
-    private final static QName _RegisterUser_QNAME = new QName("http://contracts.webservice.fameden.com/", "registerUser");
+    private final static QName _RegisterUserResponse_QNAME = new QName("http://registration.contracts.webservice.fameden.com/", "registerUserResponse");
+    private final static QName _RegisterUser_QNAME = new QName("http://registration.contracts.webservice.fameden.com/", "registerUser");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fameden.webservice.contracts
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.fameden.webservice.contracts.registration
      * 
      */
     public ObjectFactory() {
@@ -86,7 +86,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RegisterUserResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://contracts.webservice.fameden.com/", name = "registerUserResponse")
+    @XmlElementDecl(namespace = "http://registration.contracts.webservice.fameden.com/", name = "registerUserResponse")
     public JAXBElement<RegisterUserResponse> createRegisterUserResponse(RegisterUserResponse value) {
         return new JAXBElement<RegisterUserResponse>(_RegisterUserResponse_QNAME, RegisterUserResponse.class, null, value);
     }
@@ -95,7 +95,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link RegisterUser }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://contracts.webservice.fameden.com/", name = "registerUser")
+    @XmlElementDecl(namespace = "http://registration.contracts.webservice.fameden.com/", name = "registerUser")
     public JAXBElement<RegisterUser> createRegisterUser(RegisterUser value) {
         return new JAXBElement<RegisterUser>(_RegisterUser_QNAME, RegisterUser.class, null, value);
     }
