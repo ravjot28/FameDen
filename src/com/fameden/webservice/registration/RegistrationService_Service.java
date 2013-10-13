@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "registrationService", targetNamespace = "http://registration.webservice.fameden.com/", wsdlLocation = "http://rav-pc:8080/FameDenWS/registrationService?wsdl")
+@WebServiceClient(name = "registrationService", targetNamespace = "http://registration.webservice.fameden.com/", wsdlLocation = "http://localhost:8080/FameDenWS/registrationService?wsdl")
 public class RegistrationService_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class RegistrationService_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://rav-pc:8080/FameDenWS/registrationService?wsdl");
+            url = new URL("http://localhost:8080/FameDenWS/registrationService?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
