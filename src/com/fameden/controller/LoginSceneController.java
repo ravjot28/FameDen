@@ -7,12 +7,17 @@ package com.fameden.controller;
 import com.fameden.bindingDTO.ForgotPasswordBindingDTO;
 import com.fameden.bindingDTO.LoginBindingDTO;
 import com.fameden.constants.GlobalConstants;
+import static com.fameden.controller.RegistrationSceneController.logger;
 import com.fameden.dto.ForgotPasswordDTO;
 import com.fameden.dto.LoginDTO;
+import com.fameden.exceptions.EmptyEmailAddressException;
+import com.fameden.exceptions.InvalidEmailAddressException;
+import com.fameden.exceptions.InvalidPasswordException;
 import com.fameden.fxml.SceneNavigator;
 import com.fameden.service.LoginService;
 import com.fameden.util.CommonValidations;
 import com.fameden.util.InvokeAnimation;
+import com.fameden.webservice.contracts.login.FamedenLoginResponse;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
@@ -20,15 +25,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author puneet
  */
 public class LoginSceneController implements Initializable, IScreenController {
-
+static Logger logger = LoggerFactory.getLogger(LoginSceneController.class);
     @FXML
-    private TextField famedenUserNameTextField, passwordTextField ;
+    private TextField famedenUserNameTextField, passwordTextField;
     @FXML
     private TextField forgotUserNameTextField, forgotEmailTextField;
     @FXML
@@ -61,27 +68,52 @@ public class LoginSceneController implements Initializable, IScreenController {
 
     @FXML
     public void login() {
-                loginDTO = new LoginDTO();
-                loginDTO.setEmailID(loginBindingDTO.getEmailID());
-                loginDTO.setPassword(loginBindingDTO.getPassword());
+        try {
+         
+        LoginService service = new LoginService();
+        loginDTO = new LoginDTO();
+        logger.info("emailAddressTextField " + loginBindingDTO.getEmailID());
+        logger.info("passwordTextField " + loginBindingDTO.getPassword());
+        loginDTO.setEmailID(loginBindingDTO.getEmailID());
+        loginDTO.setPassword(loginBindingDTO.getPassword());
+        loginDTO.setLoginMode("FAMEDEN");
 
-                LoginService service = new LoginService();
-               loginDTO = (LoginDTO) service.processRequest(loginDTO);
-                
-                   if (!loginDTO.isIsEmailIDNull()) {
-            if (!loginDTO.isIsPasswordNull()) {
-                
-                //Call next screen    
-            } else {
-                InvokeAnimation.attentionSeekerWobble(passwordTextField);
-            }
+        FamedenLoginResponse response = (FamedenLoginResponse) service.processRequest(loginDTO);
+
+        if (response == null) {
+            logger.info("Error");
+        } else if (response.getStatus().equals(GlobalConstants.SUCCESS)) {
+            logger.info("Sccess");//TODO: Show next screen
         } else {
-            InvokeAnimation.attentionSeekerWobble(famedenUserNameTextField);
+            logger.info("Error message " + response.getErrorMessage());
         }
-    }
-
-    @FXML
-    public void forgotPassword() {
+    } catch (EmptyEmailAddressException ex) {
+             logger.error(ex.getMessage(), ex);
+            InvokeAnimation.attentionSeekerWobble(famedenUserNameTextField);
+        } catch(InvalidEmailAddressException ex) {
+            logger.error(ex.getMessage(), ex);
+            famedenUserNameTextField.setText(null);
+            famedenUserNameTextField.setPromptText(GlobalConstants.invalidEmailIDMessage);
+            InvokeAnimation.attentionSeekerWobble(famedenUserNameTextField);
+        }  catch (InvalidPasswordException ex) {
+            logger.error(ex.getMessage(), ex);
+            InvokeAnimation.attentionSeekerWobble(passwordTextField);
+        } catch(Exception ex){
+            logger.error(ex.getMessage(), ex);
+        }
+//                   if (!loginDTO.isIsEmailIDNull()) {
+//            if (!loginDTO.isIsPasswordNull()) {
+//                
+//                //Call next screen    
+//            } else {
+//                InvokeAnimation.attentionSeekerWobble(passwordTextField);
+//            }
+//        } else {
+//            InvokeAnimation.attentionSeekerWobble(famedenUserNameTextField);
+//        }
+}
+@FXML
+        public void forgotPassword() {
 
         forgotPasswordVBox.setDisable(false);
         InvokeAnimation.appearByFading(forgotPasswordVBox);
@@ -90,19 +122,19 @@ public class LoginSceneController implements Initializable, IScreenController {
     }
 
     @Override
-    public void setScreenParent(SceneNavigator screenPage) {
+        public void setScreenParent(SceneNavigator screenPage) {
         myController = screenPage;
     }
 
     @FXML
-    public void nevermind() {
+        public void nevermind() {
         InvokeAnimation.disappearByFading(forgotPasswordVBox);
         forgotPasswordVBox.setDisable(true);
         forgotPasswordVBox.setOpacity(0.0);
     }
 
     @FXML
-    public void sendVerificationEmail() {
+        public void sendVerificationEmail() {
         forgotPasswordDTO = new ForgotPasswordDTO();
         if (!CommonValidations.isStringEmpty(forgotPasswordBindingDTO.getUserName()) || !CommonValidations.isStringEmpty(forgotPasswordBindingDTO.getEmailID())) {
             if (!CommonValidations.isStringEmpty(forgotPasswordBindingDTO.getUserName()) && !CommonValidations.isStringEmpty(forgotPasswordBindingDTO.getEmailID())) {
@@ -129,7 +161,7 @@ public class LoginSceneController implements Initializable, IScreenController {
     }
 
     @FXML
-    public void closeFired() {
+        public void closeFired() {
         System.exit(0);
     }
 }
